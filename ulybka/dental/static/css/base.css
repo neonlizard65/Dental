@@ -1,0 +1,46 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.menu, .footer{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer{
+    background-color: #060606;
+    color: #eeeeee;
+}
+
+.menu{
+    background-color: #1fb622;
+    color: #eeeeee;
+}
+
+body{
+    margin: 0px;
+}
+
+.content{
+    min-height: 80vh;
+}
+
+.button{
+    color: white;
+    background-color: #1fb622;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    font-size: 1.2em;
+    white-space: nowrap;
+    max-width: 120px;
+    transition: 0.3s;
+}
+
+.button:hover{
+    transform: scale(1.2);
+}

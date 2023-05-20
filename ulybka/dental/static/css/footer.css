@@ -1,0 +1,28 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-pages{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.footer-page{
+    position: relative;
+    transition: 0.2s;
+    text-align: center;
+    
+}
+
+.footer-page a{
+    display: block;
+    color: white;
+    text-decoration: none;   
+    width: 100%;
+    height: 100%; 
+}
+
+.footer-page:hover{
+    transform: scale(1.2);
+}

@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Улыбка{% endblock title %} </title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'res/logo.png ' %}" type="image/x-icon">
+    {% block styles %}{% endblock styles %}
+</head>
+<body>
+    <div class="menu">
+        {% include 'include/menu.html' %}
+    </div>
+    
+    <div class="content">
+        {% block content %}
+    
+        {% endblock content %}
+    </div>
+
+    <footer>
+        {% include 'include/footer.html' %}
+    </footer>
+    <script src="https://kit.fontawesome.com/d58d2ae301.js" crossorigin="anonymous"></script>
+</body>
+</html>

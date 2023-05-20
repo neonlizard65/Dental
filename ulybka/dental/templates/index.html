@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Главная страница{% endblock title %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="cover">
+        <img src="{% static 'res/dental-social-media.jpg' %}" alt="Обложка">
+        <div class="cover-text">
+            <h1>Добро пожаловать в стоматологию "Улыбка"!</h1>
+            <p>Стоматология "Улыбка" - это место, где вы можете получить профессиональную помощь в области стоматологии. Мы предлагаем широкий спектр услуг, включая лечение кариеса, протезирование, отбеливание зубов, лечение десен и многое другое. <a href="about">Узнать больше</a></p>
+            <h1>Запишитесь на прием!</h1>
+            <p>Ваша улыбка - это ваша визитная карточка. Мы поможем вам создать идеальную улыбку!</p>
+            <a class="button" href="">Записаться</a>
+        </div>
+    </div>
+
+    <div class="services">
+        <h1>
+            Услуги
+        </h1>
+        <div class="service-grid">
+            <div class="service">
+                <img src="{% static 'res/serv1.png' %}" alt="">
+                Имплантация зубов
+            </div>
+            <div class="service">
+                <img src="{% static 'res/serv2.png' %}" alt="">
+                Исправление прикуса
+            </div>
+            <div class="service">
+                <img src="{% static 'res/serv3.png' %}" alt="">
+                Лечение кист зубов
+            </div>
+            <div class="service">
+                <img src="{% static 'res/serv4.png' %}" alt="">
+                Отбеливание зубов
+            </div>
+            <div class="service">
+                <img src="{% static 'res/serv5.png' %}" alt="">
+                Удаление зубов без боли
+            </div>
+            <div class="service">
+                <img src="{% static 'res/serv6.png' %}" alt="">
+                Лечение кариеса
+            </div>
+            <div class="service">
+                <img src="{% static 'res/serv7.png' %}" alt="">
+                Лечение каналов
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
