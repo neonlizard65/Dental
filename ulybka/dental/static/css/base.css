@@ -1,5 +1,6 @@
 *{
     font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
 }
 
 .menu, .footer{
@@ -28,7 +29,7 @@ body{
     min-height: 80vh;
 }
 
-.button{
+.button, input[type="submit"]{
     color: white;
     background-color: #1fb622;
     padding: 10px 20px;
@@ -37,10 +38,18 @@ body{
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     font-size: 1.2em;
     white-space: nowrap;
-    max-width: 120px;
     transition: 0.3s;
 }
 
-.button:hover{
+.button:hover, input[type="submit"]:hover{
     transform: scale(1.2);
+}
+
+h1, h2{
+    margin-bottom: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 10px;
+    border-bottom: 2px solid #1fb622;
+    width: fit-content;
 }

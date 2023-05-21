@@ -1,1 +1,24 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Врачи{% endblock title %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/doctors.css' %}">{% endblock styles %}
+
+{% block content %}
+
+<div class="doctor-grid">
+
+    {% for doctor in doctors %}
+    
+    <div class="doctor">
+        <img src="/media/{{doctor.photo}}" alt="">
+        <h2>{{doctor.last_name}} {{doctor.first_name}} {{doctor.patronym}}</h2>
+        <p>{{doctor.speciality.name}}</p>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content%}

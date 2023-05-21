@@ -1,1 +1,52 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Правовая информация{% endblock title %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/law.css' %}">{% endblock styles %}
+
+{% block content %}
+
+<div class="container">
+    <div class="docs-grid">
+        <a class="doc" href="{% static 'res/license.png' %}" download="{% static 'res/license.png' %}">
+            <i class="fa-solid fa-file-image m-1"></i>
+            Лицензия
+        </a>
+        <a class="doc" href="{% static 'res/docs/Federalnyj_zakon_ot_21_noyabrya_2011_g._N_323-FZ.pdf' %}" download="{% static 'res/docs/Federalnyj_zakon_ot_21_noyabrya_2011_g._N_323-FZ.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+            Федеральный закон от 21 ноября 2011 г. №323-ФЗ «Об основах охраны здоровья граждан в Российской Федерации
+        </a>
+        <a class="doc" href="{% static 'res/docs/Federalnyj_zakon_ot_29_noyabrya_2010_g._N_326-FZ.pdf' %}" download="{% static 'res/docs/Federalnyj_zakon_ot_29_noyabrya_2010_g._N_326-FZ.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+		    Федеральный закон от 29 ноября 2010 г. №326-ФЗ «Об обязательном медицинском страховании в Российской Федерации».
+        </a>
+        <a class="doc" href="{% static 'res/docs/Postanovlenie_Pravitelstva_RF_ot_28_noyabrya_2014_g._N_1273.pdf' %}" download="{% static 'res/docs/Postanovlenie_Pravitelstva_RF_ot_28_noyabrya_2014_g._N_1273.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+            Постановление Правительства Российской Федерации от 28 ноября 2014 г. №1273 «О Программе государственных гарантий бесплатного оказания гражданам медицинской помощи на 2015 год и на плановый период 2016 и 2017 годов».
+        </a>
+        <a class="doc" href="{% static 'res/docs/Prikaz_Ministerstva_zdravoohraneniya_RF_ot_21_dekabrya_2012_g_-1342n.pdf' %}" download="{% static 'res/docs/Prikaz_Ministerstva_zdravoohraneniya_RF_ot_21_dekabrya_2012_g_-1342n.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+		    Приказ Министерства здравоохранения Российской Федерации от 21 декабря 2012 г. №1342н «Об утверждении Порядка выбора гражданином медицинской организации (за исключением случаев оказания скорой медицинской помощи) за пределами территории субъекта Российской Федерации, в котором проживает гражданин, при оказании ему медицинской помощи в рамках программы государственных гарантий бесплатного оказания медицинской помощи».
+        </a>
+        <a class="doc" href="{% static 'res/docs/Prikaz_Minzdravsotsrazvitiya_RF_ot_26_aprelya_2012_g._-_406n.pdf' %}" download="{% static 'res/docs/Prikaz_Minzdravsotsrazvitiya_RF_ot_26_aprelya_2012_g._-_406n.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+            Приказ Министерства здравоохранения и социального развития Российской Федерации от 26 апреля 2012 г. №406н «Об утверждении Порядка выбора гражданином медицинской организации при оказании ему медицинской помощи в рамках программы государственных гарантий бесплатного оказания гражданам медицинской помощи».
+        </a>
+        <a class="doc" href="{% static 'res/docs/Stomatologiya-Tarifnoe-soglashenie-OMS-na-2019g.-ot-26.12.2018g.-Pril-8_90-protokol_2019-god.pdf' %}" download="{% static 'es/docs/Stomatologiya-Tarifnoe-soglashenie-OMS-na-2019g.-ot-26.12.2018g.-Pril-8_90-protokol_2019-god.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+            Тарифное соглашение на 2019 год
+        </a>
+        <a class="doc" href="{% static 'res/docs/TS-na-2019-god.pdf' %}" download="{% static 'res/docs/TS-na-2019-god.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+		    Приложение к тарифному соглашению
+        </a>
+        <a class="doc" href="{% static 'res/docs/Zakon_Moskovskoj_oblasti_ot_14_noyabrya_2013_g._N_132_2013-OZ.pdf' %}" download="{% static 'res/docs/Zakon_Moskovskoj_oblasti_ot_14_noyabrya_2013_g._N_132_2013-OZ.pdf' %}">
+            <i class="fa-regular fa-file-pdf m-1"></i>
+		    Закон Московской области от 14 ноября 2013 г. №132/2013-ОЗ «О здравоохранении в Московской области».
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

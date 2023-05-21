@@ -22,15 +22,6 @@
     color: #1fb622;
 }
 
-h1{
-    margin-bottom: 0px;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 0 10px;
-    border-bottom: 2px solid #1fb622;
-    width: fit-content;
-}
-
 .cover img{
     min-width: 50vw;
 }

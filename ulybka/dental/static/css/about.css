@@ -1,0 +1,48 @@
+.slide-in{
+    position: relative;
+    animation: animatetop 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes animatetop {
+    from {
+        bottom: -300px;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+#p2{
+    animation-delay: 1.0s;
+}
+
+#p3{
+    animation-delay: 2.0s;
+}
+
+#p4{
+    animation-delay: 3.0s;
+}
+
+#p5{
+    animation-delay: 4.0s;
+}
+
+p{
+    max-width: 80vw;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 1.5em;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

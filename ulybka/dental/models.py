@@ -1,13 +1,14 @@
 from enum import unique
 from django.db import models
+from django.db.models import Case, When, Value
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
-days_of_week = ((0, "Понедельник"), (1, "Вторник"), (2, "Среда"), (3, "Четверг"), (4, "Пятница"), (5, "Суббота"), (6, "Воскресенье"))
+days_of_week = (("Понедельник", "Понедельник"), ("Вторник", "Вторник"), ("Среда", "Среда"), ("Четверг", "Четверг"), ("Пятница", "Пятница"), ("Суббота", "Суббота"), ("Воскресенье", "Воскресенье"))
 
 class Specialty(models.Model):
     name = models.CharField(max_length=30, verbose_name="Название")
-    about = models.CharField(max_length=150, verbose_name="Описание")
+    about = models.CharField(max_length=150, verbose_name="Описание", blank=True)
     
     class Meta:
         verbose_name = "Специальность"
@@ -20,14 +21,36 @@ class Specialty(models.Model):
         return self.name
     
 class CommonUser(AbstractUser):
-    patronym = models.CharField(max_length=30, verbose_name="Отчество", null=True)
-    dob = models.DateField(verbose_name="Дата рождения", null=True)
+    patronym = models.CharField(max_length=30, verbose_name="Отчество", null=True, blank=True)
+    dob = models.DateField(verbose_name="Дата рождения", null=True, blank=True)
     photo = models.ImageField(verbose_name="Фотография", null=True)
+    email = models.EmailField(verbose_name="Эл. почта", unique=True)
+    username = None
+    first_name = models.CharField(max_length=50, verbose_name="Имя") # Required
+    last_name = models.CharField(max_length=50, verbose_name="Фамилия") # Required
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    
+class ScheduleManager(models.Manager):
+    def get_queryset(self):
+        query = super(ScheduleManager, self).get_queryset()
+        query = query.order_by(Case(
+            When (day_of_week = 'Понедельник', then=Value(0)),
+            When (day_of_week = 'Вторник', then=Value(1)),
+            When (day_of_week = 'Среда', then=Value(2)),
+            When (day_of_week = 'Четверг', then=Value(3)),
+            When (day_of_week = 'Пятница', then=Value(4)),
+            When (day_of_week = 'Суббота', then=Value(5)),
+            When (day_of_week = 'Воскресенье', then=Value(6)),
+        ), 'start_time')
+        return query
     
 class Schedule(models.Model):
     day_of_week =  models.CharField(choices=days_of_week, verbose_name="День недели:")
-    start_time = models.CharField(max_length=5, verbose_name="Начало приема: ")
-    end_time = models.CharField(max_length=5, verbose_name="Конец приема: ")
+    start_time = models.CharField(max_length=5, verbose_name="Начало приема")
+    end_time = models.CharField(max_length=5, verbose_name="Конец приема")
+    objects = ScheduleManager()
     
     class Meta:
         verbose_name = "Расписание"
@@ -39,6 +62,7 @@ class Schedule(models.Model):
     def __str__(self) -> str:
         return f"{self.day_of_week}: {self.start_time} - {self.end_time}"
     
+
     
 class Doctor(CommonUser):
     speciality = models.ForeignKey(Specialty, verbose_name="Специальность", on_delete=models.CASCADE)

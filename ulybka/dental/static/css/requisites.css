@@ -1,0 +1,26 @@
+.req-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 20px;
+    gap: 10px;
+ 
+}
+.req{
+    display: flex;
+    align-items: center;
+    border: #1fb622 solid 2px;
+    background-color: #cff0c5;
+    border-radius: 7px;
+    padding: 10px;
+}
+.req-icon i{
+    font-size: 4em;
+    margin: 0px 20px 0px 10px;
+    color:#1fb622;
+}
+
+.req-icon{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+}

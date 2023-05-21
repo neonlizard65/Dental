@@ -1,1 +1,48 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Контакты{% endblock title %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/contacts.css' %}">{% endblock styles %}
+
+{% block content %}
+
+<div class="contacts">
+    <div class="contact">
+        <div class="contact-icon">
+            <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <div class="contact-info">
+            <h2>143909, Московская область, город Балашиха, ул. Звездная, дом 10</h2>
+            <p>Наш адрес</p>
+        </div>
+    </div>
+
+    <div class="contact">
+        <div class="contact-icon">
+            <i class="fa-solid fa-phone"></i>
+        </div>
+        <div class="contact-info">
+            <h2>+7 (985) 233-25-22</h2>
+            <p>Наш телефон</p>
+        </div>
+    </div>
+
+    <div class="contact">
+        <div class="contact-icon">
+            <i class="fa-regular fa-envelope"></i>
+        </div>
+        <div class="contact-info">
+            <h2>ulybkadent@mail.ru</h2>
+            <p>Напишите нам на почту</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="map">
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad13523d4c0ee7c02e85ca57ec727f3caf9d439749ec47099d536d220e183524f&amp;width=100%25&amp;height=584&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+
+{% endblock content %}

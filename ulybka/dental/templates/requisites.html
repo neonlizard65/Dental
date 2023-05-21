@@ -1,5 +1,106 @@
 {% extends 'base.html' %}
 
-<div class="content">
-    
-</div>
+{% load static %}
+
+{% block title %}Реквизиты{% endblock title %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/requisites.css' %}">{% endblock styles %}
+
+{% block content %}
+
+    <div class="req-grid">
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-sharp fa-solid fa-file-invoice"></i>
+            </div>
+            <div class="req-info">
+                <h2>Наименование организации</h2>
+                <p>Общество с ограниченной ответственностью «Улыбка»</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div class="req-info">
+                <h2>Юридический адрес</h2>
+                <p>143909, Московская область, город Балашиха, ул. Звездная, дом 10</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-file-contract"></i>
+            </div>
+            <div class="req-info">
+                <h2>ОГРН</h2>
+                <p>1035000701614»</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-id-card-clip"></i>
+            </div>
+            <div class="req-info">
+                <h2>ИНН/КПП организации</h2>
+                <p>5001011269/500101001</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="req-info">
+                <h2>Телефон</h2>
+                <p>+7 (985) 233-25-22</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="req-info">
+                <h2>Директор</h2>
+                <p>Сайфутдинов Юрий Нагметович</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="req-info">
+                <h2>Полное наименование учреждения банка</h2>
+                <p>ПАО СБЕРБАНК Г.МОСКВА</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-money-check"></i>
+            </div>
+            <div class="req-info">
+                <h2>Расчетный счет</h2>
+                <p>40702810940040101123</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-money-check"></i>
+            </div>
+            <div class="req-info">
+                <h2>Корреспондентский счет</h2>
+                <p>30101810400000000225</p>
+            </div>
+        </div>
+        <div class="req">
+            <div class="req-icon">
+                <i class="fa-solid fa-money-check"></i>
+            </div>
+            <div class="req-info">
+                <h2>БИК</h2>
+                <p>044525225</p>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock content %}
