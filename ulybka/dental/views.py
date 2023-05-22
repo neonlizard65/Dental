@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from django.contrib import messages
 from .models import Doctor
 from .forms import RegisterForm, LoginForm
 
@@ -23,11 +27,29 @@ def contacts(request):
 def requisites(request):
     return render(request, "requisites.html")
     
-def login(request):
+def login_page(request):
     form = LoginForm()
     return render(request, "login.html", {"form": form})
 
-def register(request):
-    form = RegisterForm()
-    return render(request, "register.html", {"form": form})
+def register_page(request: HttpRequest):
+    
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            patient = form.save()
+            messages.success(request, "Успешная регистрация")
+            login(request, patient)
+            return redirect('')
+        else:
+            for field in form:
+                if field.errors:
+                    print("Field Error:", field.name,  field.errors)
+            return render(request, "register.html", {"form": form})     
+    elif request.method == 'GET':
+        form = RegisterForm()
+        return render(request, "register.html", {"form": form})
 
+
+@login_required(login_url='/login')
+def cabinet(request):
+    pass

@@ -23,7 +23,7 @@ class Specialty(models.Model):
 class CommonUser(AbstractUser):
     patronym = models.CharField(max_length=30, verbose_name="Отчество", null=True, blank=True)
     dob = models.DateField(verbose_name="Дата рождения", null=True, blank=True)
-    photo = models.ImageField(verbose_name="Фотография", null=True)
+    photo = models.ImageField(verbose_name="Фотография", null=True, blank=True)
     email = models.EmailField(verbose_name="Эл. почта", unique=True)
     username = None
     first_name = models.CharField(max_length=50, verbose_name="Имя") # Required

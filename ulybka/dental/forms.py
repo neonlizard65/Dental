@@ -11,4 +11,4 @@ class RegisterForm(UserCreationForm):
     
     class Meta:
         model = Patient
-        fields = ("last_name", "first_name", "patronym", "dob", "email", 'photo', "password1", "password2")
+        fields = ("last_name", "first_name", "patronym", "dob", "email", "phone", 'photo', "password1", "password2")
