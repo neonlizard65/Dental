@@ -1,7 +1,9 @@
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.forms import ValidationError
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import Doctor
 from .forms import RegisterForm, LoginForm
@@ -27,9 +29,26 @@ def contacts(request):
 def requisites(request):
     return render(request, "requisites.html")
     
-def login_page(request):
-    form = LoginForm()
+def login_page(request: HttpRequest):
+    if request.method == 'POST':
+        form = LoginForm(data = request.POST)
+        
+        if form.is_valid():
+            user = form.get_user()
+            if user is not None and user.is_active:
+                login(request, user)
+                return redirect('cabinet')
+            else:
+                messages.error(request, "Неверно указана почта или пароль")
+        else:
+            messages.error(request, "Неверно указана почта или пароль")
+         
+            
+    else:
+        form = LoginForm()
+        
     return render(request, "login.html", {"form": form})
+
 
 def register_page(request: HttpRequest):
     
@@ -41,9 +60,6 @@ def register_page(request: HttpRequest):
             login(request, patient)
             return redirect('')
         else:
-            for field in form:
-                if field.errors:
-                    print("Field Error:", field.name,  field.errors)
             return render(request, "register.html", {"form": form})     
     elif request.method == 'GET':
         form = RegisterForm()
@@ -52,4 +68,8 @@ def register_page(request: HttpRequest):
 
 @login_required(login_url='/login')
 def cabinet(request):
-    pass
+    return render(request, "cabinet.html")
+
+def logout_page(request):
+    logout(request)
+    return redirect("/")

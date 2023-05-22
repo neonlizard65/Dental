@@ -7,6 +7,9 @@
 {% block styles %}<link rel="stylesheet" href="{% static 'css/form.css' %}">{% endblock styles %}
 {% block content %}
 <h1>Авторизация</h1>
+
+
+
 <form method="post" action="">
     {% csrf_token %}
     <div class="container">
@@ -15,15 +18,11 @@
             {{field.label_tag}} {{field}}
         </div>
         {% endfor %}
-        {% for field in form %}
-        {% if field.errors %}
-		<ul class="errorlist">
-			{% for error in field.errors %}
-			<li>{{ error }}</li>
-			{% endfor %}
-		</ul>
-		{% endif %}
+        <ul class="errorlist">
+        {% for message in messages %}
+            <li>{{ message }}</li>
         {% endfor %}
+        </ul>
         <input type="submit" value="Войти">
     </div>
 </form>

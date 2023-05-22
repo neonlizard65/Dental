@@ -84,4 +84,6 @@ input[type="file"]{
 
 .errorlist{
     color: #aaaaaa;
+    align-self: center;
+    margin: 0px;
 }

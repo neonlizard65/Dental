@@ -22,15 +22,25 @@
 
 <div class="panel">
     <div class="panel-btn">
-        <a href="login">
+        <a href="cabinet">
             <i class="fa-solid fa-right-to-bracket"></i>
             Личный кабинет
         </a>
     </div>
+    {% if user.is_authenticated %}
+    <div class="panel-btn">
+        <a href="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Выйти
+        </a>
+    </div>
+    {% else %}
     <div class="panel-btn">
         <a href="register">
             <i class="fa-solid fa-user-plus"></i>
             Регистрация
         </a>
     </div>
+    {% endif %}
+
 </div>
