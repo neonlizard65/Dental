@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#Маршрутизация по ссылкам
 urlpatterns = [
     path("", views.index, name=""),
     path("about", views.about),

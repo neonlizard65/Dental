@@ -1,3 +1,5 @@
+
+//При выборе врача из списка врачей, отправляется get запрос по id врача. Мы получаем по ссылке json, который содержит все свободные времена для приема
 doctor.onchange = () => {
     document.getElementById("time").innerHTML = "";
     document.getElementById("time").style.visibility = 'visible';

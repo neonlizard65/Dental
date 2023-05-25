@@ -4,8 +4,10 @@ from django.db.models import Case, When, Value
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
+#Кортеж дней недели
 days_of_week = (("Понедельник", "Понедельник"), ("Вторник", "Вторник"), ("Среда", "Среда"), ("Четверг", "Четверг"), ("Пятница", "Пятница"), ("Суббота", "Суббота"), ("Воскресенье", "Воскресенье"))
 
+#Таблица специльность
 class Specialty(models.Model):
     name = models.CharField(max_length=30, verbose_name="Название")
     about = models.CharField(max_length=150, verbose_name="Описание", blank=True)
@@ -20,6 +22,7 @@ class Specialty(models.Model):
     def __str__(self) -> str:
         return self.name
     
+#Класс-родитель для всех пользователей
 class CommonUser(AbstractUser):
     patronym = models.CharField(max_length=30, verbose_name="Отчество", null=True, blank=True)
     dob = models.DateField(verbose_name="Дата рождения", null=True, blank=True)
@@ -29,9 +32,10 @@ class CommonUser(AbstractUser):
     first_name = models.CharField(max_length=50, verbose_name="Имя") # Required
     last_name = models.CharField(max_length=50, verbose_name="Фамилия") # Required
     
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email' #Авторизация по почте
     REQUIRED_FIELDS = []
     
+#Менеджер расписания, нужен для корректной сортировки расписания в списках
 class ScheduleManager(models.Manager):
     def get_queryset(self):
         query = super(ScheduleManager, self).get_queryset()
@@ -46,6 +50,7 @@ class ScheduleManager(models.Manager):
         ), 'start_time')
         return query
     
+#Таблица расписания
 class Schedule(models.Model):
     day_of_week =  models.CharField(choices=days_of_week, verbose_name="День недели:")
     start_time = models.CharField(max_length=5, verbose_name="Начало приема")
@@ -62,8 +67,7 @@ class Schedule(models.Model):
     def __str__(self) -> str:
         return f"{self.day_of_week}: {self.start_time} - {self.end_time}"
     
-
-    
+#Таблица врача, наследует от общего класса пользователей
 class Doctor(CommonUser):
     speciality = models.ForeignKey(Specialty, verbose_name="Специальность", on_delete=models.CASCADE)
     times = models.ManyToManyField(Schedule, verbose_name="Расписание")
@@ -78,6 +82,7 @@ class Doctor(CommonUser):
     def __str__(self) -> str:
         return f"Врач - {self.last_name} {self.first_name} {self.patronym}"
 
+#Таблица пациента, наследует от общего класса пользователей
 class Patient(CommonUser):
     phone = PhoneNumberField(verbose_name = "Номер телефона", unique=True)
     
@@ -91,6 +96,7 @@ class Patient(CommonUser):
     def __str__(self) -> str:
         return f"Пациент - {self.last_name} {self.first_name} {self.patronym}"
 
+#Таблица приемов
 class Visit(models.Model):
     doctor = models.ForeignKey(Doctor, verbose_name="Врач", on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, verbose_name="Пациент", on_delete=models.CASCADE)
@@ -106,6 +112,7 @@ class Visit(models.Model):
     def __str__(self) -> str:
         return f"({self.datetime}) {self.patient.last_name} - {self.doctor.last_name}"
 
+#Таблица зубной карты
 class ToothCard(models.Model):
     visit = models.ForeignKey(Visit, verbose_name="Прием", on_delete=models.CASCADE, default=None)
     diagnosis = models.CharField(max_length=50, verbose_name="Диагноз")
