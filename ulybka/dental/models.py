@@ -107,8 +107,7 @@ class Visit(models.Model):
         return f"({self.datetime}) {self.patient.last_name} - {self.doctor.last_name}"
 
 class ToothCard(models.Model):
-    patient = patient = models.ForeignKey(Patient, verbose_name="Пациент", on_delete=models.CASCADE)
-    datetime = models.DateTimeField(verbose_name="Время приема")
+    visit = models.ForeignKey(Visit, verbose_name="Прием", on_delete=models.CASCADE, default=None)
     diagnosis = models.CharField(max_length=50, verbose_name="Диагноз")
     healing = models.CharField(max_length=150, verbose_name="Лечение")
 
@@ -117,8 +116,8 @@ class ToothCard(models.Model):
         verbose_name_plural = "Зубная карта пациента"
         
     def __repr__(self) -> str:
-        return f"({self.datetime}) {self.diagnosis} - {self.healing}"
+        return f"({self.visit}) {self.diagnosis} - {self.healing}"
     
     def __str__(self) -> str:
-        return f"({self.datetime}) {self.diagnosis} - {self.healing}"
+        return f"({self.visit}) {self.diagnosis} - {self.healing}"
     

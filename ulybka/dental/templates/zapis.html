@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Запись{% endblock title %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/form.css' %}">{% endblock styles %}
+
+{% block content %}
+
+<h3>Все записи делаются на ближайший день недели</h3>
+<form action="/post/visit" method="post">
+        <div class="container">
+        {% csrf_token %}
+        <select name="doctor" id="doctor">
+            <option disabled selected value> -- Выберите врача -- </option>'
+            {% for doctor in doctors %}
+            <option value="{{doctor.id}}">{{doctor.last_name}} {{doctor.first_name}} {{doctor.patronym}} - {{doctor.speciality.name}}</option>
+            {% endfor %}
+        </select>
+    
+        <select name="time" id="time" style="visibility: hidden">
+        </select>
+    
+        <input type="submit" value="Записаться">
+    
+        <script src="{% static 'script/times.js' %}"></script>
+    </div>
+</form>
+
+
+{% endblock %}

@@ -4,8 +4,30 @@
 
 {% block title %}Правовая информация{% endblock title %}
 
-{% block styles %}<link rel="stylesheet" href="{% static 'css/cabinet.css' %}">{% endblock styles %}
+{% block styles %}<link rel="stylesheet" href="{% static 'css/form.css' %}">{% endblock styles %}
 
 {% block content %}
+<img src="/media/{{data.photo}}" alt="{{data.last_name}}">
+
+<form action="" method='post'>
+    {% csrf_token %}
+    <div class="container">
+        {% for field in form %}
+        <div class="field">
+            {{field.label_tag}} {{field}}
+        </div>
+        {% endfor %}
+		<ul class="errorlist">
+        {% for field in form %}
+        {% if field.errors %}
+			{% for error in field.errors %}
+			<li>{{ error }}</li>
+			{% endfor %}
+        {% endif %}
+        {% endfor %}
+		</ul>
+        <input type="submit" value="Обновить">
+    </div>
+</form>
 
 {% endblock content %}

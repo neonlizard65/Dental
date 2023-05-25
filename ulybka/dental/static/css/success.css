@@ -1,0 +1,22 @@
+.mess a{
+    color: white;
+    background-color: #1fb622;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    font-size: 1.2em;
+    white-space: nowrap;
+    transition: 0.3s;
+    width: 400px;
+    margin: 20px;
+}
+
+a:hover{
+    transform: scale(1.2);
+}
+
+.mess{
+    display: flex;
+    flex-direction: column;
+}

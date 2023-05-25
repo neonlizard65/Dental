@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Успешно{% endblock title %}
+
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/success.css' %}">{% endblock styles %}
+
+{% block content %}
+
+<div class="mess">
+    <h1>Успешно оформлена запись</h1>
+    <a href="/">Вернуться на главную</a>
+</div>
+
+
+
+{% endblock content %}

@@ -7,7 +7,7 @@
 {% block styles %}<link rel="stylesheet" href="{% static 'css/form.css' %}">{% endblock styles %}
 {% block content %}
 <h1>Регистрация</h1>
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container">
         {% for field in form %}
